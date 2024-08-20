@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+<br><br><br>
+<div class="container" style="border:10px solid rgb(196, 255, 230) ; padding: 10px; width: 90%; margin-top: -70px;">
+
+    <h1>Log In</h1>
+    <br>
+ 
+    <form method="post">
+        {% csrf_token %}
+        {%for field in form%}
+        <div class="form-control">
+            {{field.label_tag}}
+            {{field}}
+        </div>
+        {%endfor%}
+
+ <br>
+        <button type="submit" class="btn  btn-dark">Log In</button>
+    </form>
+</div>
+ 
+<div>
+    {% if user.is_authenticated %}
+    <br>
+    <h2 style="margin-left: 280px;">Welcome {{ user.username }}!</h2>
+    <form action="{% url 'logout' %}?next=/" method="post">
+        {% csrf_token %}
+        <br>
+        <button type="submit" style="margin-left: 400px;" class="btn btn-dark">Log Out</button>
+ 
+    </form>
+</div>
+{% else %}
+<h2 style="margin-top: 10px; margin-left: 280px;">You are not logged in!</h2>
+<!-- <a href="{% url 'login' %}">Log In</a> -->
+{% endif %}
+{% endblock %}

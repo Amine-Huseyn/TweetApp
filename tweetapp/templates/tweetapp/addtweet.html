@@ -1,0 +1,25 @@
+{%extends "base.html" %}
+
+{%block content%}
+<div class="container" style="border:10px solid rgb(196, 255, 230) ; padding: 10px; width: 90%; margin-top: 10px;">
+  <h1>Add Tweet</h1>
+  <br> 
+
+<form action="" method="POST">
+    {% csrf_token %}
+    <div class="container">
+            <div class="mb-3">
+              <!--
+            <label for="username" class="form-label"><h4>Username</h4></label>
+            <input type="text" class="form-control" id="username" name="username">
+            <div id="emailHelp" class="form-text"></div>
+            </div>
+            -->
+            <div class="mb-3">
+            <label for="Tweet" class="form-label"><h4>Tweet</h4></label>
+            <input type="text" class="form-control" id="Tweet" name="tweet">
+            </div>
+            <button type="submit" class="btn btn-dark">Send</button>
+        </div>
+  </form>
+{%endblock%}
